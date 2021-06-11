@@ -13,4 +13,4 @@
 
 - ### [Contest 3](https://contest.yandex.ru/contest/27663/enter/) — [Sets](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%203%20-%20Sets) :basket:
 
-- ### [Contest 4](https://contest.yandex.ru/contest/27665/enter/) — [Maps](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%203%20-%20Maps) :world_map:
+- ### [Contest 4](https://contest.yandex.ru/contest/27665/enter/) — [Maps](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%204%20-%20Maps) :world_map:
