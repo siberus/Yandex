@@ -1,21 +1,38 @@
-// Unsolved
+#include <algorithm>
+#include <iostream>
+#include <set>
 
-// #include <unordered_set>
-// #include <iostream>
-
-// using namespace std;
-
-
-// struct Crossroads {
-//     unsigned x, y;
-// };
-
-// int main() {
-//     unsigned time, distance, numMessages;
-//     cin >> time >> distance >> numMessages;
+using namespace std;
 
 
-//     unsigned numPossiblePoints;
+int main() {
+    int time, distance;
+    unsigned numMessages;
+    cin >> time >> distance >> numMessages;
 
-//     return EXIT_SUCCESS;
-// }
+    int x, y, x_1 = 0, y_1 = 0, x_2 = 0, y_2 = 0;
+    for (unsigned i = 0; i < numMessages; ++i) {
+        cin >> x >> y;
+        x_1 = max(x_1 - time, x + y - distance);
+        y_1 = max(y_1 - time, x - y - distance);
+        x_2 = min(x_2 + time, x + y + distance);
+        y_2 = min(y_2 + time, x - y + distance);
+    }
+    
+    unsigned numPoints = 0;
+    set<pair<int, int>> points;
+    for (x = x_1; x <= x_2; ++x) {
+        for (y = y_1; y <= y_2; ++y) {
+            if ((x + y) % 2 == 0) {
+                ++numPoints;
+                points.emplace(make_pair((x + y) / 2, (x - y) / 2));
+            }
+        }
+    }
+    cout << numPoints << endl;
+    for (const auto& [x, y] : points) {
+        cout << x << ' ' << y << endl;
+    }
+
+	return EXIT_SUCCESS;
+}

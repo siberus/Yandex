@@ -1,66 +1,50 @@
-// Unsolved
+#include <unordered_set>
+#include <iostream>
+#include <string>
 
-// #include <algorithm>
-// #include <iostream>
-// #include <iterator>
-// #include <vector>
-// #include <string>
-// #include <set>
-
-// using namespace std;
+using namespace std;
 
 
-// int main() {
-//     unsigned numPupils;
-//     cin >> numPupils;
+int main() {
+    unsigned numPupils;
+    cin >> numPupils;
 
-//     string language;
-//     unsigned numLanguages;
-//     cin >> numLanguages;
-//     set<string> languages;
-//     while (numLanguages) {
-//         cin >> language;
-//         languages.emplace(language);
-//         --numLanguages;
-//     }
+    string lang;
+    unsigned numLangs;
+    unordered_set<string> allLangs, commonLangs;
+    for (cin >> numLangs; numLangs > 0; --numLangs) {
+        cin >> lang;
+        allLangs.emplace(lang);
+        commonLangs.emplace(lang);
+    }
 
-//     string nextLanguage;
-//     unsigned numNextLanguages;
-//     cin >> numNextLanguages;
-//     set<string> nextLanguages;
-//     while (numNextLanguages) {
-//         cin >> nextLanguage;
-//         nextLanguages.emplace(nextLanguage);
-//         --numNextLanguages;
-//     }
+    unordered_set<string> langs;
+    auto langIter = commonLangs.begin();
+    for (unsigned i = 1; i < numPupils; ++i) {
+        langs.clear();
+        for (cin >> numLangs; numLangs > 0; --numLangs) {
+            cin >> lang;
+            langs.emplace(lang);
+            allLangs.emplace(lang);
+        }
+        auto langIter = commonLangs.begin();
+        while (langIter != commonLangs.end()) {
+            if (langs.contains(*langIter) == false) langIter = commonLangs.erase(langIter);
+            else ++langIter;
+        }
+    }
 
-//     vector<string> allLanguages, commonLanguages;
-//     ranges::set_union(languages, nextLanguages, back_inserter(allLanguages));
-//     ranges::set_intersection(languages, nextLanguages, back_inserter(commonLanguages));
+    unsigned numCommonLangs = commonLangs.size();
+    cout << numCommonLangs << endl;
+    for (const string& lang : commonLangs) {
+        cout << lang << endl;
+    }
 
-//     numPupils -= 2;
-//     for (unsigned i = 0; i < numPupils; ++i) {
-//         cin >> numNextLanguages;
-//         while (numNextLanguages) {
-//             cin >> nextLanguage;
-//             nextLanguages.emplace(nextLanguage);
-//             --numNextLanguages;
-//         }
-//         ranges::set_union(allLanguages, nextLanguages, back_inserter(allLanguages));
-//         ranges::set_intersection(commonLanguages, nextLanguages, back_inserter(commonLanguages));
-//     }
+    unsigned numAllLangs = allLangs.size();
+    cout << numAllLangs << endl;
+    for (const string& lang : allLangs) {
+        cout << lang << endl;
+    }
 
-//     unsigned numAllLanguages = allLanguages.size();
-//     cout << numAllLanguages << endl;
-//     for (const string& language : allLanguages) {
-//         cout << language << endl;
-//     }
-
-//     unsigned numCommonLanguages = commonLanguages.size();
-//     cout << numCommonLanguages << endl;
-//     for (const string& language : commonLanguages) {
-//         cout << language << endl;
-//     }
-
-//     return EXIT_SUCCESS;
-// }
+    return EXIT_SUCCESS;
+}

@@ -1,4 +1,4 @@
-# :weight_lifting: **Yandex Algorithmic Training**
+# :weight_lifting: **Yandex Algorithmic Workouts**
 
 [![forthebadge](https://forthebadge.com/images/badges/you-didnt-ask-for-this.svg)](https://forthebadge.com)
 
@@ -14,3 +14,5 @@
 - ### [Contest 3](https://contest.yandex.ru/contest/27663/enter/) — [Sets](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%203%20-%20Sets) :basket:
 
 - ### [Contest 4](https://contest.yandex.ru/contest/27665/enter/) — [Maps](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%204%20-%20Maps) :world_map:
+
+- ### [Contest 5](https://contest.yandex.ru/contest/27794/enter/) — [Prefix Sums](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%205%20-%20Prefix%20Sums) :roller_coaster:
