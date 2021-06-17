@@ -13,6 +13,8 @@
 
 - ### [Contest 3](https://contest.yandex.ru/contest/27663/enter/) — [Sets](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%203%20-%20Sets) :basket:
 
-- ### [Contest 4](https://contest.yandex.ru/contest/27665/enter/) — [Maps](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%204%20-%20Maps) :world_map:
+- ### [Contest 4](https://contest.yandex.ru/contest/27665/enter/) — [Maps and Counting Sort](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%204%20-%20Maps%20and%20Counting%20Sort) :world_map: :1234:
 
-- ### [Contest 5](https://contest.yandex.ru/contest/27794/enter/) — [Prefix Sums](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%205%20-%20Prefix%20Sums) :roller_coaster:
+- ### [Contest 5](https://contest.yandex.ru/contest/27794/enter/) — [Prefix Sums and Two-Pointer Technique](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%205%20-%20Prefix%20Sums%20and%20Two-Pointer%20Technique) :roller_coaster: :twisted_rightwards_arrows:
+
+- ### [Contest 6](https://contest.yandex.ru/contest/27844/enter/) — [Binary Search](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%206%20-%20Binary%20Search) :fountain:
