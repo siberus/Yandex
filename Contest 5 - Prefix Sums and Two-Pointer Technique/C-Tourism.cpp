@@ -1,48 +1,47 @@
-// Unsolved
+#include <algorithm>
+#include <iostream>
+#include <vector>
 
-// #include <iostream>
-// #include <vector>
-
-// using namespace std;
+using namespace std;
 
 
-// int main() {
-//     unsigned numHeights;
-//     cin >> numHeights;
+int main() {
+    int numHeights;
+    cin >> numHeights;
 
-//     int distance, height;
-//     vector<int> heights(numHeights);
-//     for (int& height : heights) {
-//         cin >> distance >> height;
-//     }
+    int distance, height;
+    vector<int> heights(numHeights);
+    for (int& height : heights) {
+        cin >> distance >> height;
+    }
 
-//     int prevHeight = heights.front(), curHeight;
-//     vector<int> forwardAscents(numHeights + 1);
-//     for (unsigned i = 2, k = 1; k < numHeights; ++i, ++k) {
-//         curHeight = heights[k];
-//         forwardAscents[i] = forwardAscents[i - 1];
-//         if (curHeight > prevHeight) forwardAscents[i] += curHeight - prevHeight;
-//         prevHeight = curHeight;
-//     }
+    vector<int> forwardAscents(numHeights);
+    int prevHeight = heights.front(), curHeight;
+    for (int i = 1; i < numHeights; ++i) {
+        curHeight = heights[i];
+        forwardAscents[i] = forwardAscents[i - 1] + max(0, curHeight - prevHeight);
+        prevHeight = curHeight;
+    }
 
-//     prevHeight = heights.back();
-//     vector<int> backwardAscents(numHeights + 1);
-//     for (int j = numHeights, k = numHeights - 2; k >= 0; ++j, --k) {
-//         curHeight = heights[k];
-//         backwardAscents[j] = backwardAscents[j - 1];
-//         if (curHeight > prevHeight) backwardAscents[j] += curHeight - prevHeight;
-//         prevHeight = curHeight;
-//     }
+    prevHeight = heights.back();
+    vector<int> backwardAscents(numHeights);
+    for (int j = numHeights - 2; j >= 0; --j) {
+        curHeight = heights[j];
+        backwardAscents[j] = backwardAscents[j + 1] + max(0, curHeight - prevHeight);
+        prevHeight = curHeight;
+    }
 
-//     unsigned numRoutes;
-//     cin >> numRoutes;
+    int numRoutes;
+    cin >> numRoutes;
 
-//     int start, finish, ascentSum;
-//     for (unsigned k = 0; k < numRoutes; ++k) {
-//         cin >> start >> finish;
-//         ascentSum = (start < finish)?(forwardAscents[finish] - forwardAscents[start]):(backwardAscents[start] - backwardAscents[finish]);
-//         cout << ascentSum << endl;
-//     }
+    int start, finish, ascentSum;
+    for (int k = 0; k < numRoutes; ++k) {
+        cin >> start >> finish;
+        --start;
+        --finish;
+        ascentSum = (start < finish)?(forwardAscents[finish] - forwardAscents[start]):(backwardAscents[finish] - backwardAscents[start]);
+        cout << ascentSum << endl;
+    }
 
-//     return EXIT_SUCCESS;
-// }
+    return EXIT_SUCCESS;
+}

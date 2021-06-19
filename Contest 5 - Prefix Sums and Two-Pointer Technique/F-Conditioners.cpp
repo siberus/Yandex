@@ -1,41 +1,33 @@
-#include <iostream>
-#include <vector>
+// Unsolved
 
-using namespace std;
+// #include <iostream>
+// #include <vector>
 
-
-int main() {
-    unsigned numTrees, numColours;
-    cin >> numTrees >> numColours;
+// using namespace std;
 
 
-    vector<unsigned> treeColours(numTrees);
-    for (unsigned& colour : treeColours) {
-        cin >> colour;
-    }
+// struct Conditioner {
+//     unsigned power, price;
+// };
 
-    unsigned colour, curNumColours = 0,
-             left = 0, right = 0, minLeft = 1, minRight = numTrees;
-    vector<unsigned> colourCounter(numColours + 1);
-    while (right < numTrees) {
-        colour = treeColours[right];
-        curNumColours += (colourCounter[colour] > 0)?(0):(1);
-        ++colourCounter[colour];
-        ++right;
-        if (curNumColours == numColours) {
-            while (colourCounter[colour] > 0) {
-                colour = treeColours[left];
-                --colourCounter[colour];
-                ++left;
-            }
-            if (right - left < minRight - minLeft) {
-                minLeft = left;
-                minRight = right;
-            }
-            --curNumColours;
-        }
-    }
-    cout << minLeft << ' ' << minRight << endl;
+// int main() {
+//     unsigned numClassrooms;
+//     cin >> numClassrooms;
+//     vector<unsigned> minPowers(numClassrooms);
+//     for (unsigned& minPower : minPowers) {
+//         cin >> minPower;
+//     }
 
-    return EXIT_SUCCESS;
-}
+//     unsigned numConditioners;
+//     cin >> numConditioners;
+//     vector<Conditioner> conditioners(numConditioners);
+//     for (Conditioner& conditioner : conditioners) {
+//         cin >> conditioner.power >> conditioner.price;
+//     }
+    
+//     unsigned minCost = 0;
+
+//     cout << minCost << endl;
+
+//     return EXIT_SUCCESS;
+// }
