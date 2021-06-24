@@ -3,20 +3,22 @@
 
 using namespace std;
 
-
-int main() {
+int main()
+{
     int numTortoises;
     cin >> numTortoises;
 
     pair<int, int> tortoise;
     set<pair<int, int>> tortoises;
-    auto& [front, back] = tortoise;
+    auto &[front, back] = tortoise;
     unsigned numTruthTellingTortoises = 0;
-    for (unsigned tortoiseCountdown = numTortoises; tortoiseCountdown > 0; --tortoiseCountdown) {
+    for (unsigned tortoiseCountdown = numTortoises; tortoiseCountdown > 0; --tortoiseCountdown)
+    {
         cin >> front >> back;
         if ((front >= 0 && back >= 0) &&
             (front + back + 1 == numTortoises) &&
-            (tortoises.contains(tortoise) == false)) {
+            (tortoises.contains(tortoise) == false))
+        {
             tortoises.emplace(tortoise);
             ++numTruthTellingTortoises;
         }

@@ -4,12 +4,13 @@
 
 using namespace std;
 
-
-int main() {
+int main()
+{
     string word;
     unsigned numUniqueWords;
     unordered_set<string> uniqueWords;
-    while (cin >> word) {
+    while (cin >> word)
+    {
         uniqueWords.emplace(word);
     }
     numUniqueWords = uniqueWords.size();

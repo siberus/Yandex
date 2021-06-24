@@ -3,13 +3,14 @@
 
 using namespace std;
 
-
-int main() {
+int main()
+{
     unsigned numElements;
     cin >> numElements;
-    
+
     vector<int> array(numElements);
-    for (int& element : array) {
+    for (int &element : array)
+    {
         cin >> element;
     }
 
@@ -18,9 +19,11 @@ int main() {
 
     int closestNumber;
     unsigned distance, minDistance = INT32_MAX;
-    for (const int& number : array) {
+    for (const int &number : array)
+    {
         distance = abs(target - number);
-        if (distance < minDistance) {
+        if (distance < minDistance)
+        {
             minDistance = distance;
             closestNumber = number;
         }

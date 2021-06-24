@@ -1,47 +1,43 @@
-// Unsolved
+#include <iostream>
+#include <vector>
 
-// #include <iostream>
-// #include <vector>
-// #include <cmath>
+using namespace std;
 
-// using namespace std;
+unsigned NearestNeighbourSearch(const vector<int> &array, const int &key)
+{
+    unsigned predecessor, successor, nearestNeighbour, mid, low = 0, high = array.size();
+    while (low < high)
+    {
+        mid = low + (high - low) / 2;
+        if (array[mid] > key)
+            high = mid;
+        else if (array[mid] < key)
+            low = mid + 1;
+        else
+            return mid;
+    }
+    predecessor = low - 1, successor = low;
+    nearestNeighbour = (successor < array.size() && (successor == 0 || array[successor] - key < key - array[predecessor])) ? (successor) : (predecessor);
+    return nearestNeighbour;
+}
 
+int main()
+{
+    unsigned numElements, numKeys;
+    cin >> numElements >> numKeys;
+    vector<int> array(numElements);
+    for (int &element : array)
+    {
+        cin >> element;
+    }
 
-// unsigned LeftmostBinarySearch(const vector<int>& array, const int& key) {
-//     unsigned mid, low = 0, high = array.size();
-//     while (low < high) {
-//         mid = low + (high - low) / 2;
-//         (array[mid] < key)?(low = mid + 1):(high = mid);
-//     }
-//     return low;
-// }
+    unsigned key, nearestNeighbour;
+    for (unsigned k = 0; k < numKeys; ++k)
+    {
+        cin >> key;
+        nearestNeighbour = NearestNeighbourSearch(array, key);
+        cout << array[nearestNeighbour] << endl;
+    }
 
-// unsigned RightmostBinarySearch(const vector<int>& array, const int& key) {
-//     unsigned mid, low = 0, high = array.size();
-//     while (low < high) {
-//         mid = low + (high - low) / 2;
-//         (array[mid] > key)?(high = mid):(low = mid + 1);
-//     }
-//     return high - 1;
-// }
-
-// int main() {
-//     unsigned numElements, numKeys;
-//     cin >> numElements >> numKeys;
-//     vector<int> array(numElements);
-//     for (int& element : array) {
-//         cin >> element;
-//     }
-
-//     unsigned low, high;
-//     int key, closestElement;
-//     for (unsigned k = 0; k < numKeys; ++k) {
-//         cin >> key;
-//         low = LeftmostBinarySearch(array, key);
-//         high = RightmostBinarySearch(array, key);
-//         closestElement = (abs(key - array[low]) < abs(key - array[high]))?(array[low]):(array[high]);
-//         cout << closestElement << endl;
-//     }
-
-//     return EXIT_SUCCESS;
-// }
+    return EXIT_SUCCESS;
+}

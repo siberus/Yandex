@@ -6,8 +6,8 @@
 
 using namespace std;
 
-
-int main() {
+int main()
+{
     int integer;
 
     string firstSet;
@@ -15,20 +15,24 @@ int main() {
     stringstream line_1(firstSet);
 
     unordered_set<int> uniqueIntegers;
-    while (line_1 >> integer) {
+    while (line_1 >> integer)
+    {
         uniqueIntegers.emplace(integer);
     }
 
     string secondSet;
     getline(cin, secondSet);
     stringstream line_2(secondSet);
-    
+
     set<int> orderedIntersection;
-    while (line_2 >> integer) {
-        if (uniqueIntegers.contains(integer)) orderedIntersection.emplace(integer);
+    while (line_2 >> integer)
+    {
+        if (uniqueIntegers.contains(integer))
+            orderedIntersection.emplace(integer);
     }
 
-    for (const int& integer : orderedIntersection) {
+    for (const int &integer : orderedIntersection)
+    {
         cout << integer << ' ';
     }
     cout << endl;

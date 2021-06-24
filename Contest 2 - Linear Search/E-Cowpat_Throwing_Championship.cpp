@@ -3,22 +3,26 @@
 
 using namespace std;
 
-
-struct Option {
+struct Option
+{
     unsigned potentialVasily, potentialVasilyIndex;
 };
 
-int main() {
+int main()
+{
     unsigned numParticipants;
     cin >> numParticipants;
     vector<unsigned> participants(numParticipants);
 
     cin >> participants[0] >> participants[1];
     unsigned farthest, farthestIndex, prev = participants[0], cur = participants[1];
-    if (prev >= cur) {
+    if (prev >= cur)
+    {
         farthest = prev;
         farthestIndex = 0;
-    } else {
+    }
+    else
+    {
         farthest = cur;
         farthestIndex = 1;
     }
@@ -26,14 +30,17 @@ int main() {
     unsigned next;
     Option option;
     vector<Option> options;
-    for (unsigned i = 2; i < numParticipants; ++i) {
+    for (unsigned i = 2; i < numParticipants; ++i)
+    {
         cin >> participants[i];
         next = participants[i];
-        if (next > farthest) {
+        if (next > farthest)
+        {
             farthest = next;
             farthestIndex = i;
         }
-        if (cur % 10 == 5 && cur > next) {
+        if (cur % 10 == 5 && cur > next)
+        {
             option.potentialVasily = cur;
             option.potentialVasilyIndex = i - 1;
             options.emplace_back(option);
@@ -43,17 +50,23 @@ int main() {
     }
 
     unsigned highestVasilyPlace = 0;
-    if (options.empty() == false) {
+    if (options.empty() == false)
+    {
         unsigned farthestVasily = 0;
-        for (const Option& option : options) {
+        for (const Option &option : options)
+        {
             auto [potentialVasily, potentialVasilyIndex] = option;
             if (potentialVasily > farthestVasily &&
-                potentialVasilyIndex > farthestIndex) farthestVasily = potentialVasily;
+                potentialVasilyIndex > farthestIndex)
+                farthestVasily = potentialVasily;
         }
-        if (farthestVasily > 0) {
+        if (farthestVasily > 0)
+        {
             ++highestVasilyPlace;
-            for (const unsigned& participant : participants) {
-                if (participant > farthestVasily) ++highestVasilyPlace;
+            for (const unsigned &participant : participants)
+            {
+                if (participant > farthestVasily)
+                    ++highestVasilyPlace;
             }
         }
     }

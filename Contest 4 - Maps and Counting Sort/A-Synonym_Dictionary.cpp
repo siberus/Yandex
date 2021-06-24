@@ -4,14 +4,15 @@
 
 using namespace std;
 
-
-int main() {
+int main()
+{
     unsigned numSynonymPairs;
     cin >> numSynonymPairs;
-    
+
     string synonym_1, synonym_2;
     unordered_map<string, string> synonymDictionary;
-    for (unsigned i = 0; i < numSynonymPairs; ++i) {
+    for (unsigned i = 0; i < numSynonymPairs; ++i)
+    {
         cin >> synonym_1 >> synonym_2;
         synonymDictionary.emplace(make_pair(synonym_1, synonym_2));
         synonymDictionary.emplace(make_pair(synonym_2, synonym_1));

@@ -4,11 +4,12 @@
 
 using namespace std;
 
-
-int main() {
+int main()
+{
     string word;
     unordered_map<string, unsigned> wordCounter;
-    while (cin >> word) {
+    while (cin >> word)
+    {
         cout << wordCounter[word] << ' ';
         ++wordCounter[word];
     }

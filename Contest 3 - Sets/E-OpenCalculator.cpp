@@ -7,16 +7,17 @@
 
 using namespace std;
 
-
-int main() {
+int main()
+{
     char digit_1, digit_2, digit_3;
     cin >> digit_1 >> digit_2 >> digit_3;
-    set<char> availableDigits = { digit_1, digit_2, digit_3 };
+    set<char> availableDigits = {digit_1, digit_2, digit_3};
 
     string number;
     cin >> number;
     set<char> requiredDigits;
-    for (const char& digit : number) {
+    for (const char &digit : number)
+    {
         requiredDigits.emplace(digit);
     }
 

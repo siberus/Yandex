@@ -3,15 +3,17 @@
 
 using namespace std;
 
-
-int main() {
+int main()
+{
     int prev;
     cin >> prev;
 
     int next;
     string doesIncrease = "YES";
-    while (cin >> next) {
-        if (next <= prev) {
+    while (cin >> next)
+    {
+        if (next <= prev)
+        {
             doesIncrease = "NO";
             break;
         }

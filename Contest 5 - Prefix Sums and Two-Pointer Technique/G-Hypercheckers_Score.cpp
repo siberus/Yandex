@@ -4,33 +4,39 @@
 
 using namespace std;
 
-
-struct Card {
+struct Card
+{
     long unsigned number, count;
 };
 
-const bool operator < (const long unsigned number, const Card& card) {
+const bool operator<(const long unsigned number, const Card &card)
+{
     return number < card.number;
 }
 
-int main() {
+int main()
+{
     long unsigned numCards, differenceMultiplier;
     cin >> numCards >> differenceMultiplier;
     vector<Card> cards(numCards);
-    for (Card& card : cards) {
+    for (Card &card : cards)
+    {
         cin >> card.number;
         card.count = 1;
     }
 
-    sort(cards.begin(), cards.end(), [](const Card& left, const Card& right) {
-        return left.number < right.number;
-    });
+    sort(cards.begin(), cards.end(), [](const Card &left, const Card &right)
+         { return left.number < right.number; });
 
     long unsigned destination = 0;
-    for (long unsigned source = 1; source < numCards; ++source) {
-        if (cards[source].number == cards[destination].number) {
+    for (long unsigned source = 1; source < numCards; ++source)
+    {
+        if (cards[source].number == cards[destination].number)
+        {
             cards[destination].count += cards[source].count;
-        } else {
+        }
+        else
+        {
             ++destination;
             cards[destination] = cards[source];
         }
@@ -39,9 +45,12 @@ int main() {
 
     long unsigned numScoreOptions = 0;
     vector<Card> moreThanOneSameCards;
-    for (Card& card : cards) {
-        if (card.count > 1) {
-            if (card.count > 2) ++numScoreOptions;
+    for (Card &card : cards)
+    {
+        if (card.count > 1)
+        {
+            if (card.count > 2)
+                ++numScoreOptions;
             moreThanOneSameCards.emplace_back(card);
         }
     }
@@ -49,7 +58,8 @@ int main() {
     long unsigned low, high, range;
 
     // Two smaller-number cards
-    for (Card& card : moreThanOneSameCards) {
+    for (Card &card : moreThanOneSameCards)
+    {
         low = card.number;
         high = low * differenceMultiplier;
         numScoreOptions += 3 * (upper_bound(cards.begin(), cards.end(), high) -
@@ -57,7 +67,8 @@ int main() {
     }
 
     // Two larger-number cards
-    for (Card& card : cards) {
+    for (Card &card : cards)
+    {
         low = card.number;
         high = low * differenceMultiplier;
         numScoreOptions += 3 * (upper_bound(moreThanOneSameCards.begin(), moreThanOneSameCards.end(), high) -
@@ -65,7 +76,8 @@ int main() {
     }
 
     // All three different cards
-    for (Card& card : cards) {
+    for (Card &card : cards)
+    {
         low = card.number;
         high = low * differenceMultiplier;
         range = upper_bound(cards.begin(), cards.end(), high) -

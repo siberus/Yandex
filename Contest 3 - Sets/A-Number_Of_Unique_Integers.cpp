@@ -3,11 +3,12 @@
 
 using namespace std;
 
-
-int main() {
+int main()
+{
     int integer;
     unordered_set<int> uniqueIntegers;
-    while (cin >> integer) {
+    while (cin >> integer)
+    {
         uniqueIntegers.emplace(integer);
     }
     unsigned numUniqueIntegers = uniqueIntegers.size();

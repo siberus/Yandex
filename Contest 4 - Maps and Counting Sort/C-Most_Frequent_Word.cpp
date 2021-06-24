@@ -4,18 +4,21 @@
 
 using namespace std;
 
-
-int main() {
+int main()
+{
     string word;
     unordered_map<string, unsigned> wordCounter;
-    while (cin >> word) {
+    while (cin >> word)
+    {
         ++wordCounter[word];
     }
 
     string maxFrequencyWord;
     unsigned maxFrequency = 0;
-    for (const auto& [word, frequency] : wordCounter) {
-        if (frequency > maxFrequency) {
+    for (const auto &[word, frequency] : wordCounter)
+    {
+        if (frequency > maxFrequency)
+        {
             maxFrequencyWord = word;
             maxFrequency = frequency;
         }

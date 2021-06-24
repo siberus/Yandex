@@ -4,8 +4,7 @@
 
 ## :white_check_mark: Solutions to programming contests organized by the [Young&&Yandex Internships Initiative](https://yandex.ru/yaintern/algorithm-training/):
 
-> ### :hugs: *Any corrections are much appreciated!*
-
+> ### :hugs: _Any corrections are much appreciated!_
 
 - ### [Contest 1](https://contest.yandex.ru/contest/27393/enter/) — [Edge Case Testing](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%201%20-%20Edge%20Case%20Testing) :test_tube:
 
@@ -18,3 +17,7 @@
 - ### [Contest 5](https://contest.yandex.ru/contest/27794/enter/) — [Prefix Sums and Two-Pointer Technique](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%205%20-%20Prefix%20Sums%20and%20Two-Pointer%20Technique) :roller_coaster: :twisted_rightwards_arrows:
 
 - ### [Contest 6](https://contest.yandex.ru/contest/27844/enter/) — [Binary Search](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%206%20-%20Binary%20Search) :fountain:
+
+- ### [Contest 7](https://contest.yandex.ru/contest/27883/enter/) — [Event Sorting](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%207%20-%20Event%20Sorting) :incoming_envelope:
+
+- ### [Contest 8](https://contest.yandex.ru/contest/28069/enter/) — [Trees](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/Contest%208%20-%20Trees) :deciduous_tree:

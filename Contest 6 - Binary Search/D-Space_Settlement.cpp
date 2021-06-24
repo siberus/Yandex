@@ -1,28 +1,22 @@
-// Unsolved
+#include <algorithm>
+#include <iostream>
 
-// #include <algorithm>
-// #include <iostream>
+using namespace std;
 
-// using namespace std;
+int main()
+{
+    long unsigned numModules, width, length, fieldWidth, fieldHeight;
+    cin >> numModules >> width >> length >> fieldWidth >> fieldHeight;
 
+    long unsigned thickness, midNumModules, maxThickness = 0, minThickness = 1e18;
+    while (minThickness > maxThickness + 1)
+    {
+        thickness = maxThickness + (minThickness - maxThickness) / 2;
+        midNumModules = max((fieldWidth / (width + 2 * thickness)) * (fieldHeight / (length + 2 * thickness)),
+                            (fieldHeight / (width + 2 * thickness)) * (fieldWidth / (length + 2 * thickness)));
+        (midNumModules < numModules) ? (minThickness = thickness) : (maxThickness = thickness);
+    }
+    cout << maxThickness << endl;
 
-// int main() {
-//     long long numModules, width, length, fieldWidth, fieldHeight;
-//     cin >> numModules >> width >> length >> fieldWidth >> fieldHeight;
-
-//     long long thickness, low = 0, high = 1e18, maxModules, maxCoatingThickness;
-//     while (high - 1 > 1) {
-//         thickness = (low + high) / 2;
-//         maxModules = max((fieldWidth / (width + 2 * thickness)) * (fieldHeight / (length + 2 * thickness)),
-//                          (fieldHeight / (width + 2 * thickness)) * (fieldWidth / (length + 2 * thickness)));
-//         if (maxModules >= numModules) {
-//             low = thickness;
-//         } else {
-//             high = thickness;
-//         }
-//     }
-//     maxCoatingThickness = low;
-//     cout << maxCoatingThickness << endl;
-
-//     return EXIT_SUCCESS;
-// }
+    return EXIT_SUCCESS;
+}

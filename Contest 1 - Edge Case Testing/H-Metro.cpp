@@ -2,8 +2,8 @@
 
 using namespace std;
 
-
-int main() {
+int main()
+{
     unsigned interval_1, interval_2, numTrains_1, numTrains_2;
     cin >> interval_1 >> interval_2 >> numTrains_1 >> numTrains_2;
 
@@ -11,17 +11,16 @@ int main() {
 
     unsigned minTime_1 = numTrains_1 + interval_1 * (numTrains_1 - 1),
              minTime_2 = numTrains_2 + interval_2 * (numTrains_2 - 1),
-             left = (minTime_1 > minTime_2)?(minTime_1):(minTime_2),
+             left = (minTime_1 > minTime_2) ? (minTime_1) : (minTime_2),
 
              maxTime_1 = numTrains_1 + interval_1 * (numTrains_1 + 1),
              maxTime_2 = numTrains_2 + interval_2 * (numTrains_2 + 1),
-             right = (maxTime_1 < maxTime_2)?(maxTime_1):(maxTime_2);
+             right = (maxTime_1 < maxTime_2) ? (maxTime_1) : (maxTime_2);
 
-    if (left > right) {
+    if (left > right)
         cout << incorrect << endl;
-    } else {
+    else
         cout << left << ' ' << right << endl;
-    }
 
     return EXIT_SUCCESS;
 }
