@@ -9,7 +9,7 @@ unsigned LeftmostBinarySearch(const vector<int> &array, const int &key)
     unsigned mid, low = 0, high = array.size();
     while (low < high)
     {
-        mid = (low + high) / 2;
+        mid = low + (high - low) / 2;
         (array[mid] < key) ? (low = mid + 1) : (high = mid);
     }
     return low;

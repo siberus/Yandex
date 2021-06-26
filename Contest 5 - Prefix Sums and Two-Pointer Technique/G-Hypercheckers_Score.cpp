@@ -1,90 +1,42 @@
-#include <algorithm>
 #include <iostream>
-#include <vector>
+#include <iterator>
+#include <map>
 
 using namespace std;
 
-struct Card
-{
-    long unsigned number, count;
-};
-
-const bool operator<(const long unsigned number, const Card &card)
-{
-    return number < card.number;
-}
-
 int main()
 {
-    long unsigned numCards, differenceMultiplier;
+    long long numCards, differenceMultiplier;
     cin >> numCards >> differenceMultiplier;
-    vector<Card> cards(numCards);
-    for (Card &card : cards)
+
+    long long card;
+    map<long long, long long> cardCounter;
+    for (long long i = 0; i < numCards; ++i)
     {
-        cin >> card.number;
-        card.count = 1;
+        cin >> card;
+        ++cardCounter[card];
     }
 
-    sort(cards.begin(), cards.end(), [](const Card &left, const Card &right)
-         { return left.number < right.number; });
-
-    long unsigned destination = 0;
-    for (long unsigned source = 1; source < numCards; ++source)
+    long long range, numDuplicates = 0, numScoreOptions = 0;
+    for (auto left = cardCounter.begin(), right = cardCounter.begin(); left != cardCounter.end(); next(left))
     {
-        if (cards[source].number == cards[destination].number)
+        while (right != cardCounter.end() &&
+               (*left).first * differenceMultiplier >= (*right).first)
         {
-            cards[destination].count += cards[source].count;
+            if ((*right).second > 1)
+                ++numDuplicates;
+            next(right);
         }
-        else
+        range = distance(left, right);
+        if ((*left).second > 1)
         {
-            ++destination;
-            cards[destination] = cards[source];
+            numScoreOptions += (range - 1) * 3;
+            --numDuplicates;
         }
+        if ((*left).second > 2)
+            ++numScoreOptions;
+        numScoreOptions += ((range - 1) * (range - 2) + numDuplicates) * 3;
     }
-    cards.resize(destination + 1);
-
-    long unsigned numScoreOptions = 0;
-    vector<Card> moreThanOneSameCards;
-    for (Card &card : cards)
-    {
-        if (card.count > 1)
-        {
-            if (card.count > 2)
-                ++numScoreOptions;
-            moreThanOneSameCards.emplace_back(card);
-        }
-    }
-
-    long unsigned low, high, range;
-
-    // Two smaller-number cards
-    for (Card &card : moreThanOneSameCards)
-    {
-        low = card.number;
-        high = low * differenceMultiplier;
-        numScoreOptions += 3 * (upper_bound(cards.begin(), cards.end(), high) -
-                                upper_bound(cards.begin(), cards.end(), low));
-    }
-
-    // Two larger-number cards
-    for (Card &card : cards)
-    {
-        low = card.number;
-        high = low * differenceMultiplier;
-        numScoreOptions += 3 * (upper_bound(moreThanOneSameCards.begin(), moreThanOneSameCards.end(), high) -
-                                upper_bound(moreThanOneSameCards.begin(), moreThanOneSameCards.end(), low));
-    }
-
-    // All three different cards
-    for (Card &card : cards)
-    {
-        low = card.number;
-        high = low * differenceMultiplier;
-        range = upper_bound(cards.begin(), cards.end(), high) -
-                upper_bound(cards.begin(), cards.end(), low);
-        numScoreOptions += 6 * (range * (range - 1) / 2);
-    }
-
     cout << numScoreOptions << endl;
 
     return EXIT_SUCCESS;
