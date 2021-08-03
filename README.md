@@ -18,6 +18,6 @@
 
 - ### [Contest 6](https://contest.yandex.ru/contest/27844/enter/) :white_check_mark: — [Binary Search](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/6.%20Binary%20Search) :fountain:
 
-- ### [Contest 7](https://contest.yandex.ru/contest/27883/enter/) :hourglass_flowing_sand: — [Event Sorting](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/7.%20Event%20Sorting) :incoming_envelope:
+- ### [Contest 7](https://contest.yandex.ru/contest/27883/enter/) :white_check_mark: — [Event Sorting](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/7.%20Event%20Sorting) :incoming_envelope:
 
-- ### [Contest 8](https://contest.yandex.ru/contest/28069/enter/) :hourglass_flowing_sand: — [Trees](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/8.%20Trees) :deciduous_tree:
+- ### [Contest 8](https://contest.yandex.ru/contest/28069/enter/) :white_check_mark: — [Trees](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/8.%20Trees) :deciduous_tree:

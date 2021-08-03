@@ -1,6 +1,6 @@
 #include <iostream>
 #include <memory>
-#include <queue>
+#include <vector>
 
 using namespace std;
 
@@ -8,43 +8,35 @@ using namespace std;
 class BinarySearchTree final {
 public:
     BinarySearchTree() : _root(nullptr) {}
-    unsigned getHeight() const {
-        queue<Node*> q;
-        q.emplace(_root.get());
-        unsigned curLevelNodeCount, height = 0;
-        while (true) {
-            curLevelNodeCount = q.size();
-            if (curLevelNodeCount == 0)
-                break;
-            ++height;
-            while (curLevelNodeCount > 0) {
-                Node* cur = q.front();
-                q.pop();
-                if (cur->_left != nullptr)
-                    q.emplace(cur->_left.get());
-                if (cur->_right != nullptr)
-                    q.emplace(cur->_right.get());
-                --curLevelNodeCount;
-            }
-        }
-        return height;
+    auto getDepths() const {
+        return _depths;
     }
     void insert(const int& value) {
         if (_root == nullptr) {
             _root = make_unique<Node>(value);
+            _depths.emplace_back(1);
         } else {
+            unsigned curDepth = 1;
+            bool isDuplicate = true;
             Node* cur = _root.get();
             while (cur->_value != value) {
                 if (value < cur->_value) {
-                    if (cur->_left == nullptr)
+                    if (cur->_left == nullptr) {
                         cur->_left = make_unique<Node>(value);
+                        isDuplicate = false;
+                    }
                     cur = cur->_left.get();
-                } else if (value > cur->_value) {
-                    if (cur->_right == nullptr)
+                } else {
+                    if (cur->_right == nullptr) {
                         cur->_right = make_unique<Node>(value);
+                        isDuplicate = false;
+                    }
                     cur = cur->_right.get();
                 }
+                ++curDepth;
             }
+            if (isDuplicate == false)
+                _depths.emplace_back(curDepth);
         }
     }
 private:
@@ -58,6 +50,7 @@ private:
         friend class BinarySearchTree;
     };
     unique_ptr<Node> _root;
+    vector<unsigned> _depths;
 };
 
 
@@ -68,7 +61,11 @@ int main() {
         tree.insert(element);
     }
 
-    cout << tree.getHeight() << endl;
+    auto depths = tree.getDepths();
+    for (const unsigned& depth : depths) {
+        cout << depth << ' ';
+    }
+    cout << endl;
 
     return EXIT_SUCCESS;
 }

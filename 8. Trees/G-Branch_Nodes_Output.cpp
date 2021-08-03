@@ -15,7 +15,7 @@ public:
         while (true) {
             curLevelNodeCount = q.size();
             if (curLevelNodeCount == 0)
-                break;
+                return height;
             ++height;
             while (curLevelNodeCount > 0) {
                 Node* cur = q.front();

@@ -1,6 +1,5 @@
 #include <iostream>
 #include <memory>
-#include <queue>
 
 using namespace std;
 
@@ -8,26 +7,25 @@ using namespace std;
 class BinarySearchTree final {
 public:
     BinarySearchTree() : _root(nullptr) {}
-    unsigned getHeight() const {
-        queue<Node*> q;
-        q.emplace(_root.get());
-        unsigned curLevelNodeCount, height = 0;
-        while (true) {
-            curLevelNodeCount = q.size();
-            if (curLevelNodeCount == 0)
-                break;
-            ++height;
-            while (curLevelNodeCount > 0) {
-                Node* cur = q.front();
-                q.pop();
-                if (cur->_left != nullptr)
-                    q.emplace(cur->_left.get());
-                if (cur->_right != nullptr)
-                    q.emplace(cur->_right.get());
-                --curLevelNodeCount;
+    int getSecondMaximum() const {
+        Node* cur = _root.get();
+        if (cur->_right == nullptr) {
+            cur = cur->_left.get();
+            while (cur->_right != nullptr) {
+                cur = cur->_right.get();
+            }
+        } else {
+            while (cur->_right->_right != nullptr) {
+                cur = cur->_right.get();
+            }
+            if (cur->_right->_left != nullptr) {
+                cur = cur->_right->_left.get();
+                while (cur->_right != nullptr) {
+                    cur = cur->_right.get();
+                }
             }
         }
-        return height;
+        return cur->_value;
     }
     void insert(const int& value) {
         if (_root == nullptr) {
@@ -39,7 +37,7 @@ public:
                     if (cur->_left == nullptr)
                         cur->_left = make_unique<Node>(value);
                     cur = cur->_left.get();
-                } else if (value > cur->_value) {
+                } else {
                     if (cur->_right == nullptr)
                         cur->_right = make_unique<Node>(value);
                     cur = cur->_right.get();
@@ -68,7 +66,7 @@ int main() {
         tree.insert(element);
     }
 
-    cout << tree.getHeight() << endl;
+    cout << tree.getSecondMaximum() << endl;
 
     return EXIT_SUCCESS;
 }

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <memory>
-#include <queue>
+#include <stack>
 
 using namespace std;
 
@@ -8,26 +8,19 @@ using namespace std;
 class BinarySearchTree final {
 public:
     BinarySearchTree() : _root(nullptr) {}
-    unsigned getHeight() const {
-        queue<Node*> q;
-        q.emplace(_root.get());
-        unsigned curLevelNodeCount, height = 0;
-        while (true) {
-            curLevelNodeCount = q.size();
-            if (curLevelNodeCount == 0)
-                break;
-            ++height;
-            while (curLevelNodeCount > 0) {
-                Node* cur = q.front();
-                q.pop();
-                if (cur->_left != nullptr)
-                    q.emplace(cur->_left.get());
-                if (cur->_right != nullptr)
-                    q.emplace(cur->_right.get());
-                --curLevelNodeCount;
+    void traverseInOrder() const {
+        stack<Node*> s;
+        Node* cur = _root.get();
+        while (cur != nullptr || s.empty() == false) {
+            while (cur != nullptr) {
+                s.emplace(cur);
+                cur = cur->_left.get();
             }
+            cur = s.top();
+            s.pop();
+            cout << cur->_value << endl;
+            cur = cur->_right.get();
         }
-        return height;
     }
     void insert(const int& value) {
         if (_root == nullptr) {
@@ -39,7 +32,7 @@ public:
                     if (cur->_left == nullptr)
                         cur->_left = make_unique<Node>(value);
                     cur = cur->_left.get();
-                } else if (value > cur->_value) {
+                } else {
                     if (cur->_right == nullptr)
                         cur->_right = make_unique<Node>(value);
                     cur = cur->_right.get();
@@ -68,7 +61,7 @@ int main() {
         tree.insert(element);
     }
 
-    cout << tree.getHeight() << endl;
+    tree.traverseInOrder();
 
     return EXIT_SUCCESS;
 }
