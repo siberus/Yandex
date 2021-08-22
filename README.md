@@ -1,6 +1,7 @@
 # :weight_lifting: **Yandex Algorithmic Workouts**
 
 [![forthebadge](https://forthebadge.com/images/badges/you-didnt-ask-for-this.svg)](https://forthebadge.com)
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/tensorush/Yandex-Algorithmic-Training)
 
 ## :man_technologist: Solutions to programming contests organized by the [Young&&Yandex Internships Initiative](https://yandex.ru/yaintern/algorithm-training/):
 
