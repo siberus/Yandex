@@ -1,6 +1,7 @@
 # :weight_lifting: **Yandex Algorithmic Workouts**
 
 [![forthebadge](https://forthebadge.com/images/badges/you-didnt-ask-for-this.svg)](https://forthebadge.com)
+[![MIT License][license-shield]][license-url]
 
 ## :man_technologist: Solutions to programming contests organized by the [Young&&Yandex Internships Initiative](https://yandex.ru/yaintern/algorithm-training/):
 
@@ -21,3 +22,8 @@
 - ### [Contest 7](https://contest.yandex.ru/contest/27883/enter/) :white_check_mark: — [Event Sorting](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/7.%20Event%20Sorting) :incoming_envelope:
 
 - ### [Contest 8](https://contest.yandex.ru/contest/28069/enter/) :white_check_mark: — [Trees](https://github.com/tensorush/Yandex-Algorithmic-Training/tree/master/8.%20Trees) :deciduous_tree:
+
+<!-- MARKDOWN LINKS -->
+
+[license-shield]: https://img.shields.io/github/license/tensorush/Yandex-Algorithmic-Training.svg?style=for-the-badge
+[license-url]: https://github.com/tensorush/Yandex-Algorithmic-Training/blob/master/LICENSE.md
