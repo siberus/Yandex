@@ -3,6 +3,7 @@
 #include <iterator>
 #include <vector>
 #include <set>
+#include <ranges>
 
 using namespace std;
 
