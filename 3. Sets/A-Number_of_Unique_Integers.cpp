@@ -9,6 +9,9 @@ int main() {
     unordered_set<int> uniqueIntegers;
     while (cin >> integer) {
         uniqueIntegers.emplace(integer);
+        char c = cin.get();
+        if (c == '\n')
+            break;
     }
     cout << uniqueIntegers.size() << endl;
 
