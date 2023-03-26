@@ -9,24 +9,20 @@ using namespace std;
 
 int main() {
     int integer;
-
-    string firstSet;
-    getline(cin, firstSet);
-    stringstream line_1(firstSet);
-
     unordered_set<int> uniqueIntegers;
-    while (line_1 >> integer) {
+    while (cin >> integer) {
         uniqueIntegers.emplace(integer);
+        char c = cin.get();
+        if (c == '\n')
+            break;
     }
-
-    string secondSet;
-    getline(cin, secondSet);
-    stringstream line_2(secondSet);
-
     set<int> orderedIntersection;
-    while (line_2 >> integer) {
-        if (uniqueIntegers.contains(integer))
+    while (cin >> integer) {
+        if (uniqueIntegers.count(integer))
             orderedIntersection.emplace(integer);
+        char c = cin.get();
+        if (c == '\n')
+            break;
     }
 
     for (const int& integer : orderedIntersection) {
