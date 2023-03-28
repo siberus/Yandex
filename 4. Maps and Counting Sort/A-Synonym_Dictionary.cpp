@@ -18,7 +18,7 @@ int main() {
     }
 
     cin >> synonym_1;
-    cout << synonymDictionary[synonym_1];
+    cout << synonymDictionary[synonym_1] << endl;
 
     return EXIT_SUCCESS;
 }
