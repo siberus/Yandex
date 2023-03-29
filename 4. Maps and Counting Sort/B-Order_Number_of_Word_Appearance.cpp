@@ -9,10 +9,25 @@ int main() {
     string word;
     unordered_map<string, unsigned> wordCounter;
     while (cin >> word) {
-        cout << wordCounter[word] << ' ';
-        ++wordCounter[word];
+    	wordCounter.emplace(word, 0);
+        wordCounter[word]++;
     }
-    cout << endl;
+
+    string maxFrequencyWord;
+    unsigned maxFrequency = 0;
+    for (const auto& [word, frequency] : wordCounter) {
+        if (frequency > maxFrequency) {
+            maxFrequencyWord = word;
+            maxFrequency = frequency;
+        }
+    	if (frequency == maxFrequency) {
+        	if (word < maxFrequencyWord){
+            	maxFrequencyWord = word;
+            	maxFrequency = frequency;
+       		}	
+    	}
+    }
+    cout << maxFrequencyWord << endl;
 
     return EXIT_SUCCESS;
 }
