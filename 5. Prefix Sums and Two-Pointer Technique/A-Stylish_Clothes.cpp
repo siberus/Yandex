@@ -24,39 +24,6 @@ int main() {
         stylishShirtColourIndex = 0, stylishPantsColourIndex = 0,
         minColourDiff = abs(shirtColours.front() - pantsColours.front());
 
-    unsigned i = 0;
-    unsigned j = 1;
-    while (i < shirtColours.size())
-    {
-        /* code */
-        while (j < pantsColours.size())
-        { 
-            if(shirtColours[i] == pantsColours[j]) 
-            {
-                stylishShirtColourIndex = i;
-                stylishPantsColourIndex = j;
-            break;
-            }   
-            else
-            {
-                if (abs(shirtColours[i] - pantsColours[j]) < minColourDiff) 
-                {
-                    minColourDiff = abs(shirtColours[i] - pantsColours[j]);
-                    stylishShirtColourIndex = i;
-                    stylishPantsColourIndex = j;
-                }
-            }
-            if (shirtColours[i] < pantsColours[j])
-                ++i;
-            else
-                ++j;
-        }
-        if(shirtColours[i] == pantsColours[j] || j == pantsColours.size()) 
-        break;
-
-    }
-    
-    /*
     for (unsigned i = 0, j = 0; i < numShirts && j < numPants; (shirtColours[i] < pantsColours[j]) ? (++i) : (++j)) {
         if (shirtColours[i] == pantsColours[j]) {
             stylishShirtColourIndex = i;
@@ -68,7 +35,7 @@ int main() {
             stylishPantsColourIndex = j;
         }
     }
-    */
+    
 
     stylishShirtColour = shirtColours[stylishShirtColourIndex], stylishPantsColour = pantsColours[stylishPantsColourIndex];
     cout << stylishShirtColour << ' ' << stylishPantsColour << endl;
