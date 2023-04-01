@@ -51,7 +51,9 @@ int main() {
             else
                 ++j;
         }
-        
+        if(shirtColours[i] == pantsColours[j]) 
+        break;
+
     }
     
     /*
