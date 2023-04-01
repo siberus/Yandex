@@ -26,6 +26,8 @@ int main() {
             ++numSums;
         }
     }
+
+
     cout << numSums << endl;
 
     return EXIT_SUCCESS;

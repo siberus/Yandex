@@ -7,11 +7,13 @@ using namespace std;
 int main() {
     unsigned numTrees, numColours;
     cin >> numTrees >> numColours;
-
     vector<unsigned> treeColours(numTrees);
-    for (unsigned& colour : treeColours) {
-        cin >> colour;
+    for(unsigned& treeColour : treeColours){
+        cin >> treeColour;
     }
+    
+    
+
 
     unsigned colour, curNumColours = 0,
         left = 0, right = 0, minLeft = 1, minRight = numTrees;

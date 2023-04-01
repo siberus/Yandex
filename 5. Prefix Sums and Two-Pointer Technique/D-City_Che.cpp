@@ -7,11 +7,11 @@ using namespace std;
 int main() {
     unsigned numMonuments, maxDistance;
     cin >> numMonuments >> maxDistance;
-    vector<unsigned> monuments(numMonuments);
-    for (unsigned& monument : monuments) {
+    vector<unsigned>monuments(numMonuments);
+    for(unsigned& monument : monuments)
+    {
         cin >> monument;
     }
-
     unsigned i = 0, j = 1;
     long unsigned numWays = 0;
     while (j < numMonuments) {
