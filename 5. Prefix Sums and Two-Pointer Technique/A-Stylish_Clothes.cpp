@@ -51,7 +51,7 @@ int main() {
             else
                 ++j;
         }
-        if(shirtColours[i] == pantsColours[j]) 
+        if(shirtColours[i] == pantsColours[j] || j == pantsColours.size()) 
         break;
 
     }
