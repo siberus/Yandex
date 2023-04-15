@@ -9,20 +9,23 @@ private:
     struct Element
     {
         /* data */
+        int id = 0;
         int value = 0;
-        int left = 0;
-        int right = 0;
+        int left = -1;
+        int right = -1;
     };
 
     Element *element;
-
+    
     int num = 0;
+    int level = 0;
     
 public:
     Tree(int data)
     {
         Element *newelement  = new Element [1];
         newelement->value = data;
+        newelement->id = 1;
         element = newelement;
         delete [] newelement;
         num = 1;
@@ -38,7 +41,8 @@ public:
         {
             newelement[i] = element[i];
         }
-        newelement[num - 1].value = data;    
+        newelement[num - 1].value = data;
+        newelement[num - 1].id =    
         element = newelement;
         delete [] newelement;
         
