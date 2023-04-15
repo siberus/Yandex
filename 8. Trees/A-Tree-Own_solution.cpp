@@ -18,31 +18,35 @@ private:
     Element *element;
 
     int num = 0;
-    int level = 0;
+    int level = 0, curLevel = 0; 
     
 public:
     Tree(int data)
     {
         Element *newelement  = new Element [1];
         newelement->value = data;
+       // delete [] element;
         element = newelement;
-        delete [] newelement;
+
         num = 1;
         cout << "Объект создан. Корень дарева равен: " << data << ". Число лементов: " << num << endl;
     };
 
-    ~Tree();
+    //~Tree();
 
     
-    void add(int data, int index = 0)
+    void add(int data, int index = 0, int curLevel = 2)
     {
         if(element[index].value == data)
+        {
             return;
+        }
+            
         if (data < element[index].value)
         {
             if (element[index].left == -1)
             {
-                num = num++;
+                num++;
                 Element *newelement = new Element[num];
                 for (int  i = 0; i < num - 1; i++)
                 {
@@ -50,17 +54,24 @@ public:
                 }
                 newelement[index].left = num-1;
                 newelement[num - 1].value = data;  
+                delete [] element;
                 element = newelement;
-                delete [] newelement;
-                cout << "Элемент создан: " << data << " Родитель: " << element[index].value <<  ". Число лементов: " << num << endl;
+                if (curLevel > level)
+                {
+                    level = curLevel;
+                }
+
+                cout << "Элемент создан: " << element[num-1].value << " Родитель: " << element[index].value 
+                    <<  ". Число элементов: " << num <<  ". Текущий уровень: " << level << endl;
+                return;
             }
-            else add(data, element[index].left);
+            else add(data, element[index].left, ++curLevel);
         }
         else
         {
             if (element[index].right == -1)
             {
-                num = num++;
+                num++;
                 Element *newelement = new Element[num];
                 for (int  i = 0; i < num - 1; i++)
                 {
@@ -68,11 +79,18 @@ public:
                 }
                 newelement[index].right = num-1;
                 newelement[num - 1].value = data;  
+                delete [] element;
                 element = newelement;
-                delete [] newelement;
-                cout << "Элемент создан: " << data << " Родитель: " << element[index].value <<  ". Число лементов: " << num << endl;
+                if (curLevel > level)
+                {
+                    level = curLevel;
+                }
+                
+                cout << "Элемент создан: " << element[num-1].value << " Родитель: " << element[index].value 
+                    <<  ". Число элементов: " << num <<  ". Текущий уровень: " << level << endl; 
+                return;
             }
-            else add(data, element[index].right);
+            else add(data, element[index].right, ++curLevel);
         }
     }
 };
@@ -85,7 +103,7 @@ int main()
     while (curValue)
     {
         cin >> curValue;
-         mytree.add(curValue);
+        mytree.add(curValue);
     }
     
 
