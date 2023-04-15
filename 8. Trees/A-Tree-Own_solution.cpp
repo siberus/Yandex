@@ -74,10 +74,20 @@ public:
             }
             else add(data, element[index].right);
         }
-
-
     }
-   
-
-
 };
+
+int main()
+{   
+    int curValue;
+    cin >> curValue;
+    Tree mytree (curValue);
+    while (curValue)
+    {
+        cin >> curValue;
+         mytree.add(curValue);
+    }
+    
+
+    return 0;
+}
