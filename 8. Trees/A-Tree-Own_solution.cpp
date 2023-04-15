@@ -18,7 +18,7 @@ private:
     Element *element;
 
     int num = 0;
-    int level = 0, curLevel = 0; 
+    int level = 1, curLevel = 2; 
     
 public:
     Tree(int data)
@@ -29,7 +29,7 @@ public:
         element = newelement;
 
         num = 1;
-        cout << "Объект создан. Корень дарева равен: " << data << ". Число лементов: " << num << endl;
+       // cout << "Объект создан. Корень дарева равен: " << data << ". Число лементов: " << num << endl;
     };
 
     //~Tree();
@@ -60,9 +60,10 @@ public:
                 {
                     level = curLevel;
                 }
-
+                /*
                 cout << "Элемент создан: " << element[num-1].value << " Родитель: " << element[index].value 
                     <<  ". Число элементов: " << num <<  ". Текущий уровень: " << level << endl;
+                    */
                 return;
             }
             else add(data, element[index].left, ++curLevel);
@@ -85,13 +86,19 @@ public:
                 {
                     level = curLevel;
                 }
-                
+                /*
                 cout << "Элемент создан: " << element[num-1].value << " Родитель: " << element[index].value 
                     <<  ". Число элементов: " << num <<  ". Текущий уровень: " << level << endl; 
+                    */
                 return;
             }
             else add(data, element[index].right, ++curLevel);
         }
+    }
+
+    int getlevel()
+    {
+        return this->level;
     }
 };
 
@@ -99,12 +106,19 @@ int main()
 {   
     int curValue;
     cin >> curValue;
-    Tree mytree (curValue);
-    while (curValue)
+    if (curValue == 0)
     {
-        cin >> curValue;
-        mytree.add(curValue);
+        cout << 0;
+        return 0;
     }
+    Tree mytree(curValue);
+    cin >> curValue;  
+    while (curValue != 0)
+    {
+        mytree.add(curValue);
+        cin >>  curValue;
+    }
+    cout << mytree.getlevel();
     
 
     return 0;
