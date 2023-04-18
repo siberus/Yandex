@@ -15,42 +15,32 @@ private:
         Element* right = NULL;
     };
 
-   Element *rootElement;
+   Element *element =NULL;
 
     int num = 0;
     int level = 1, curLevel = 2; 
     
 public:
-   /* Tree(int data)
+    Tree(int data)
     {
-        Element *newelement  = new Element [1];
-        newelement->value = data;
-       // delete [] element;
-        element = newelement;
-
+        element->value = data;
         num = 1;
        // cout << "Объект создан. Корень дарева равен: " << data << ". Число лементов: " << num << endl;
     };
-    */
 
     //~Tree();
 
     
     void add(int data, int index = 0, int curLevel = 2)
     {
-        if (rootElement == NULL)
-        {
-            rootElement->value=data;
-        }
-        
-        if(element[index].value == data)
+        if(element->value == data)
         {
             return;
         }
             
-        if (data < element[index].value)
+        if (data < element->value)
         {
-            if (element[index].left == -1)
+            if (element->left == NULL)
             {
                 num++;
                 Element *newelement = new Element[num];
