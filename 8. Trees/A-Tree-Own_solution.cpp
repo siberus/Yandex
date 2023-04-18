@@ -11,17 +11,17 @@ private:
     {
         /* data */
         int value = 0;
-        int left = -1;
-        int right = -1;
+        Element* left = NULL;
+        Element* right = NULL;
     };
 
-    Element *element;
+   Element *rootElement;
 
     int num = 0;
     int level = 1, curLevel = 2; 
     
 public:
-    Tree(int data)
+   /* Tree(int data)
     {
         Element *newelement  = new Element [1];
         newelement->value = data;
@@ -31,12 +31,18 @@ public:
         num = 1;
        // cout << "Объект создан. Корень дарева равен: " << data << ". Число лементов: " << num << endl;
     };
+    */
 
     //~Tree();
 
     
     void add(int data, int index = 0, int curLevel = 2)
     {
+        if (rootElement == NULL)
+        {
+            rootElement->value=data;
+        }
+        
         if(element[index].value == data)
         {
             return;
