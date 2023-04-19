@@ -1,125 +1,76 @@
 #include <iostream>
-#include <array>
+
 
 using namespace std;
 
 class Tree
 {
 private:
-    /* data */
     struct Element
     {
-        /* data */
         int value = 0;
-        int left = -1;
-        int right = -1;
-    };
+        Element* left = NULL;
+        Element* right = NULL;
+    }; 
+    Element *rootElement = NULL;
+ // Функция для создания нового узла
+    Element* newElement(int data) {
+    Element* element = new Element;
+    element->value = data;
+    element->left = NULL;
+    element->right = NULL;
+    return element;
+    }   
 
-    Element *element;
+// Функция для вставки нового узла в дерево
+    Element* insert(Element* root, int data) {
+        if (root == NULL) {
+            return newElement(data);
+        }
+        if (root->value == data)
+        {
+            return root;
+        }
+        if (data < root->value) {
+            root->left = insert(root->left, data);
+        } else {
+            root->right = insert(root->right, data);
+        }
+        cout << "Элемент: " << root->value  << endl;
+        return root;
+    }
 
-    int num = 0;
-    int level = 1, curLevel = 2; 
-    
+
 public:
-    Tree(int data)
-    {
-        Element *newelement  = new Element [1];
-        newelement->value = data;
-       // delete [] element;
-        element = newelement;
+    //Tree()
+   
 
-        num = 1;
-       // cout << "Объект создан. Корень дарева равен: " << data << ". Число лементов: " << num << endl;
-    };
+   // ~Tree();
 
-    //~Tree();
+    //Element *element =NULL;
 
-    
-    void add(int data, int index = 0, int curLevel = 2)
-    {
-        if(element[index].value == data)
+   
+    void add(int data){
+        if (this->rootElement == NULL)
         {
-            return;
+            rootElement = newElement(data);
+        }else{
+            insert(rootElement, data);
         }
-            
-        if (data < element[index].value)
-        {
-            if (element[index].left == -1)
-            {
-                num++;
-                Element *newelement = new Element[num];
-                for (int  i = 0; i < num - 1; i++)
-                {
-                    newelement[i] = element[i];
-                }
-                newelement[index].left = num-1;
-                newelement[num - 1].value = data;  
-                delete [] element;
-                element = newelement;
-                if (curLevel > level)
-                {
-                    level = curLevel;
-                }
-                /*
-                cout << "Элемент создан: " << element[num-1].value << " Родитель: " << element[index].value 
-                    <<  ". Число элементов: " << num <<  ". Текущий уровень: " << level << endl;
-                    */
-                return;
-            }
-            else add(data, element[index].left, ++curLevel);
-        }
-        else
-        {
-            if (element[index].right == -1)
-            {
-                num++;
-                Element *newelement = new Element[num];
-                for (int  i = 0; i < num - 1; i++)
-                {
-                    newelement[i] = element[i];
-                }
-                newelement[index].right = num-1;
-                newelement[num - 1].value = data;  
-                delete [] element;
-                element = newelement;
-                if (curLevel > level)
-                {
-                    level = curLevel;
-                }
-                /*
-                cout << "Элемент создан: " << element[num-1].value << " Родитель: " << element[index].value 
-                    <<  ". Число элементов: " << num <<  ". Текущий уровень: " << level << endl; 
-                    */
-                return;
-            }
-            else add(data, element[index].right, ++curLevel);
-        }
+        
+
     }
 
-    int getlevel()
-    {
-        return this->level;
-    }
 };
 
 int main()
 {   
     int curValue;
-    cin >> curValue;
-    if (curValue == 0)
+    Tree mytree;
+    while (cin >> curValue && curValue != 0)
     {
-        cout << 0;
-        return 0;
-    }
-    Tree mytree(curValue);
-    cin >> curValue;  
-    while (curValue != 0)
-    {
-        mytree.add(curValue);
-        cin >>  curValue;
-    }
-    cout << mytree.getlevel();
-    
 
+        mytree.add(curValue);
+    }
     return 0;
 }
