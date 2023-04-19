@@ -11,15 +11,9 @@ private:
         int value = 0;
         Element* left = NULL;
         Element* right = NULL;
-    };  
-public:
-    //Tree();
-
-   // ~Tree();
-
-    Element *element =NULL;
-
-    // Функция для создания нового узла
+    }; 
+    Element *rootElement = NULL;
+ // Функция для создания нового узла
     Element* newElement(int data) {
     Element* element = new Element;
     element->value = data;
@@ -46,6 +40,27 @@ public:
         return root;
     }
 
+
+public:
+    //Tree()
+   
+
+   // ~Tree();
+
+    //Element *element =NULL;
+
+   
+    void add(int data){
+        if (this->rootElement == NULL)
+        {
+            rootElement = newElement(data);
+        }else{
+            insert(rootElement, data);
+        }
+        
+
+    }
+
 };
 
 int main()
@@ -54,8 +69,8 @@ int main()
     Tree mytree;
     while (cin >> curValue && curValue != 0)
     {
-        
-        mytree.insert(mytree.element,  curValue);
+
+        mytree.add(curValue);
     }
     return 0;
 }
