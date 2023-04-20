@@ -64,11 +64,17 @@ private:
         {
             node = node->left;
             max = node->value;
+            /*
             if (node->right != NULL)
             {
                 max = secMax(node->right);
             }
-            
+            */
+            while (node->right != NULL)
+        {
+            node = node->right;
+            max = node->value;
+        }
             
             
         }        
