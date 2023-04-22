@@ -20,9 +20,9 @@ void addMine(vector<vector<int>> *pole, int x, int y, int m, int n){
     {
         for (int j = 1; j <= n; j++)
         {
-            if (abs(y-i) == 1 || abs(x-j))
+            if (abs(y-i) == 1 && abs(x-j) == 1)
             {
-                (*pole)[+i][j]++;
+                (*pole)[i][j]++;
             }
             if (i == y && j == x)
             {
