@@ -12,6 +12,7 @@ vector<vector<int>> poleBuild(int m, int n){
             line.push_back(0);
         }
     poleNull.push_back(line);
+    line.erase(line.begin(), line.end());
     }
     return poleNull;
 }
@@ -20,7 +21,7 @@ void addMine(vector<vector<int>> *pole, int x, int y, int m, int n){
     {
         for (int j = 1; j <= n; j++)
         {
-            if (abs(y-i) == 1 && abs(x-j) == 1)
+            if ((abs(y-i) <= 1) && (abs(x-j) <= 1) && (*pole)[i][j] != -1)
             {
                 (*pole)[i][j]++;
             }
@@ -45,14 +46,15 @@ int main()
     }
     for (int i = 1; i <= m; i++)
     {
-        for (int j = 0; j <= n; j++)
+        for (int j = 1; j <= n; j++)
         {
             if (pole[i][j] == -1)
             {
-                cout << "*";
+                cout << "*" << " ";
             }else            
-            cout << pole[i][j];
+            cout << pole[i][j] << " ";
         }
+        cout << endl;
     }
     return 0;
 }
