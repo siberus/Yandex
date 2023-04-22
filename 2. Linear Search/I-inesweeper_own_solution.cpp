@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <math.h>
-#include <array>
 
 using namespace std;
 
@@ -19,7 +18,7 @@ vector<vector<int>> poleBuild(int m, int n){
 void addMine(vector<vector<int>> *pole, int x, int y, int m, int n){
     for (int  i = 1; i <= m; i++)
     {
-        for (int j = 1; i <= n; j++)
+        for (int j = 1; j <= n; j++)
         {
             if (abs(y-i) == 1 || abs(x-j))
             {
