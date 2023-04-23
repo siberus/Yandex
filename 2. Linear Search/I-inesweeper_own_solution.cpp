@@ -17,6 +17,8 @@ vector<vector<int>> poleBuild(int m, int n){
     return poleNull;
 }
 void addMine(vector<vector<int>> *pole, int x, int y, int m, int n){
+   if ((*pole)[y][x] != -1)
+   {
     for (int  i = 1; i <= m; i++)
     {
         for (int j = 1; j <= n; j++)
@@ -31,6 +33,9 @@ void addMine(vector<vector<int>> *pole, int x, int y, int m, int n){
             }
         }
     }
+   }
+   
+    
     return;
 }
 
@@ -41,7 +46,7 @@ int main()
     vector<vector<int>> pole = poleBuild(m, n);
     for (int i = 0; i < k; i++)
     {
-        cin >> x >> y;
+        cin >> y >> x;
         addMine( &pole, x, y, m, n);
     }
     for (int i = 1; i <= m; i++)
